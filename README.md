@@ -2,7 +2,15 @@
 
 *(Updated on April 14, 2015)*
 
-## Why XBS?
+## Table of content
+ * [Why XBS](#WhyXBS)
+ * [What is XBS](#WhatXBS)
+ * [Platform Components](#Components)
+ * [Architecture Advantages](#Advantages)
+ * [Screen Shots](#ScreenShots)
+ * [Give it a try?](#demo)
+
+## <a name="WhyXBS"/>Why XBS?
 
  * Visually modelling application processes. Graphically design process flow, process interaction, and process life cycle, for both UI and non-UI 
 processes. XBS has proprietary process modeling diagram, which is not UML based. It is straightforward for people with or without programming 
@@ -19,7 +27,7 @@ is developed using XBS), to manage XBS application server cluster.
 large clustered computer farm on fly, without code change.
 
  
-## What is XBS?
+<a name="WhatIsXBS" />## What is XBS?
 
 XBS is a generic application development platform, to design and execute dynamic, modular applications: from simple desktop application, web 
 application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
@@ -50,7 +58,7 @@ provides off-the-shelf features for distributed application, like fail over, loa
 application execution console (or programmatic), a module can be configured to run on a predefined server set (‘Group’ in XBS). When need more 
 computation power, just add machines to the server set. XBS cluster will automatically balance load to added machines.
 
-## Platform Components
+## <a name="Components" />Platform Components
 
   * <font color="blue">IDE</font>. XBS IDE provides graphical application processes modeling tools, to define components, nodes, events, resources, 
 etc. and link them together to form application processes. Meanwhile, the IDE also provides programming environment to code for 'UI' and 'Code' nodes, 
@@ -90,7 +98,7 @@ a foundation for domain-specific modeling; XBS execution environment provides ma
 events trap, etc.
  
 
-## Architecture advantages
+## <a name="Advantages" />Architecture advantages
 
 As shown in Figure [#Architecture_Diagram], XBS application is made up by a set of loosely coupled components. Each components can be individually 
 deployed on servers in a heterogeneous <font color="blue">computer farm</font> environment. Blessed by that architecture, XBS brings significant 
@@ -127,7 +135,6 @@ changed between synchronized and a-synchronized. So, for example, to XBS develop
 there is no need JNI programming effort. UI codes can use any web UI frameworks, jQuery, Extjs, Mootools, etc. UI designer has flexible to build 
 multiple set of nodes for different kind of devices, e.g. web browser or Mobile device. And they are sharing the same set of code nodes. In addition, 
 UI designers can work on UI nodes and meanwhile, programmers work on code nodes. XBS has zero learning curve for experienced developers. There is no 
-
 'XBS script or XBS language" such thing.
 
   * <font color="blue">Effective project management.</font> Since application is split into modules and nodes, project manager can balance the work 
@@ -203,7 +210,7 @@ _XBS Cluster Management Console itself is a XBS application. The following is th
 <img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/XBS%20Server%20module.png" width="500" />
 
 
-## Give it a try? 
+## <a name="demo" />Give it a try? 
 I setup a XBS development environment on a test machine. I also create a couple of demo XBS applications: one is a desktop UI application, one is 
 non-UI application (calculate PI) and one is a web application (url is 'http://localhost:5555/test' )
 
