@@ -27,18 +27,20 @@ is developed using XBS), to manage XBS application server cluster.
 large clustered computer farm on fly, without code change.
 
  
-<a name="WhatIsXBS" />## What is XBS?
+## <a name="WhatIsXBS" /> What is XBS?
 
 XBS is a generic application development platform, to design and execute dynamic, modular applications: from simple desktop application, web 
 application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
 Server, application execution management console, and application unit-test framework. 
 
-<a name="Architecture_Diagram"></a><img src="http://xbs-application-development-platform.googlecode.com/files/xbs%20architecture%20diagram.jpg"/>
+<img src="http://xbs-application-development-platform.googlecode.com/files/xbs%20architecture%20diagram.jpg" width="800"/>
 
 XBS is a model-driven application development platform. XBS Application development cycle is straightforward: first, model application processes by 
 using XBS graphical modeling tools. After that, to implement all the code nodes (if any) with chosen programming languages. 
 XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, ‘the model is the executable’. XBS Engine manages 
 application models loading, remote calling, scheduling and fail-over, etc. Except that, application code talks to third party API directly. 
+
+<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/architecture_stack.png" width="600" />
 
 XBS application process is modeled by a set of loosely coupled modules. XBS module is a software block which has full-featured interface: inputs, 
 outcomes (each outcome has its own set of outputs), events (outlet & inlet) and calls (inlet and outlet). XBS interface is declarative and programming 
@@ -164,7 +166,7 @@ log on page, it calls 'authentication' module/process to validate user according
 authentication module and then return to XBS engine. XBS engine, as design, opens corresponding window according to user type. If 'failed', it return 
 'Exception' outcome with error message to XBS (or you can easily add a UI node to show the message to user.)_
 
-<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/Main.png" width="500" />
+<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/main_module.png" width="1024"/>
 
 
 ### The 'Auth' module
@@ -196,7 +198,7 @@ workers and therefore, it has fail-over and load balancing. If it's "1", the mod
 the monitor/profile tab. It provides valuable application execution statistics data: the usage of module instance pool, number of calls and average 
 execution time for each module and its nodes, etc._
 
-<img src="http://xbs-application-development-platform.googlecode.com/files/xbsadmin_monitor_highlighted.PNG" width="500" />
+<img src="http://xbs-application-development-platform.googlecode.com/files/xbsadmin_monitor_highlighted.PNG" width="800" />
 
 
 ### Demo: a three-page wizard module
@@ -207,7 +209,7 @@ execution time for each module and its nodes, etc._
 ### Screen shot: The 'Main' module of XBS Cluster Management Console
 _XBS Cluster Management Console itself is a XBS application. The following is the screen shot of its 'main' module._
 
-<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/XBS%20Server%20module.png" width="500" />
+<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/XBS%20Server%20module.png" width="800" />
 
 
 ## <a name="demo" />Give it a try? 
