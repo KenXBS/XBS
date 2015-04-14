@@ -1,4 +1,4 @@
-# XBS : an executable model-driven application development platform
+﻿# XBS : an executable model-driven application development platform
 
 (Updated on April 14, 2015)
 
@@ -37,7 +37,7 @@ XBS modules can be individually deployed, configured, executed among XBS applica
 
   * _<font color="blue">Test harness platform</font> to facility unit and integration test. XBS debugger can let developer put breakpoints in the process diagram, and enable step by step debugging at graphic level._
   
-# Relationships with latest IT technologies
+## Relationships with latest IT technologies
 
    * <font color="blue">Event-driven</font> XBS modeling is event-enabled. XBS execution environment handles local and remote, system and application events.
 
