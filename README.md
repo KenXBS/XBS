@@ -34,7 +34,7 @@ using XBS graphical modeling tools. After that, to implement all the code nodes 
 XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, ‘the model is the executable’. XBS Engine manages 
 application models loading, remote calling, scheduling and fail-over, etc. Except that, application code talks to third party API directly. 
 
-<img src="https://github.com/KenXBS/XBS/blob/master/images/xbs%20architecture%20diagram.jpg" width="600" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/architecture_stack.png" width="600" />
 
 XBS application process is modeled by a set of loosely coupled modules. XBS module is a software block which has full-featured interface: inputs, 
 outcomes (each outcome has its own set of outputs), events (outlet & inlet) and calls (inlet and outlet). XBS interface is declarative and programming 
@@ -182,7 +182,7 @@ module data, or hard-coded value._
 _The following screen shot shows the same application module as the above one, with its login module expanded in-line. That should be convenient for 
 application processes review. _
 
-<img src="https://github.com/KenXBS/XBS/blob/master/images/app_main_large.PNG" width="500" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/app_main_large.png" width="500" />
 
 
 ### XBS admin console
@@ -192,7 +192,7 @@ workers and therefore, it has fail-over and load balancing. If it's "1", the mod
 the monitor/profile tab. It provides valuable application execution statistics data: the usage of module instance pool, number of calls and average 
 execution time for each module and its nodes, etc._
 
-<img src="https://github.com/KenXBS/XBS/blob/master/images/XBSAdminConsole_screenshot.PNG" width="800" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/XBSAdminConsole_screenshot.png" width="800" />
 
 
 ### Demo: a three-page wizard module
