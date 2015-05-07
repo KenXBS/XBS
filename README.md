@@ -27,14 +27,14 @@ XBS is a generic application development platform, to design and execute dynamic
 application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
 Server, application execution management console, and application unit-test framework. 
 
-<img src="https://github.com/KenXBS/XBS/blob/master/xbs%20architecture%20diagram.jpg" width="800"/>
+<img src="https://github.com/KenXBS/XBS/blob/master/images/xbs%20architecture%20diagram.jpg" width="800"/>
 
 XBS is a model-driven application development platform. XBS Application development cycle is straightforward: first, model application processes by 
 using XBS graphical modeling tools. After that, to implement all the code nodes (if any) with chosen programming languages. 
 XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, ‘the model is the executable’. XBS Engine manages 
 application models loading, remote calling, scheduling and fail-over, etc. Except that, application code talks to third party API directly. 
 
-<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/architecture_stack.png" width="600" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/xbs%20architecture%20diagram.jpg" width="600" />
 
 XBS application process is modeled by a set of loosely coupled modules. XBS module is a software block which has full-featured interface: inputs, 
 outcomes (each outcome has its own set of outputs), events (outlet & inlet) and calls (inlet and outlet). XBS interface is declarative and programming 
@@ -160,7 +160,7 @@ log on page, it calls 'authentication' module/process to validate user according
 authentication module and then return to XBS engine. XBS engine, as design, opens corresponding window according to user type. If 'failed', it return 
 'Exception' outcome with error message to XBS (or you can easily add a UI node to show the message to user.)_
 
-<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/main_module.png" width="1024"/>
+<img src="https://github.com/KenXBS/XBS/blob/master/images/main_module.png" width="1024"/>
 
 
 ### The 'Auth' module
@@ -168,21 +168,21 @@ _The following screen shot shows the 'authentication' module of the above applic
 turn, starts authentication db and ready for two external calls: DoAuth and GetUserInfo. The module is long time process and designed to provide 
 services to other process. It also generate an OUT event when auth db got problem. The event is delivered to other processes as designed._
 
-<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/auth.png" width="500" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/auth.png" width="500" />
 
 
 ### Connection Configure
 _The following screen shot depicts the connection configure window. Node's inputs can be configured to be some from last node's outputs, some from 
 module data, or hard-coded value._
 
-<img src="https://xbs-application-development-platform.googlecode.com/files/property%20window.PNG" width="500" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/property_config.png" width="500" />
 
 
 ### App main module in expanded view
 _The following screen shot shows the same application module as the above one, with its login module expanded in-line. That should be convenient for 
 application processes review. _
 
-<img src="http://xbs-application-development-platform.googlecode.com/files/app%20main%20large.PNG" width="500" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/app_main_large.PNG" width="500" />
 
 
 ### XBS admin console
@@ -192,18 +192,18 @@ workers and therefore, it has fail-over and load balancing. If it's "1", the mod
 the monitor/profile tab. It provides valuable application execution statistics data: the usage of module instance pool, number of calls and average 
 execution time for each module and its nodes, etc._
 
-<img src="http://xbs-application-development-platform.googlecode.com/files/xbsadmin_monitor_highlighted.PNG" width="800" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/XBSAdminConsole_screenshot.PNG" width="800" />
 
 
 ### Demo: a three-page wizard module
 
-<img src="https://xbs-adf.googlecode.com/files/wizard%20demo%20module.PNG" width="500" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/3pagewizard.png" width="500" />
 
 
 ### Screen shot: The 'Main' module of XBS Cluster Management Console
 _XBS Cluster Management Console itself is a XBS application. The following is the screen shot of its 'main' module._
 
-<img src="https://xbs-application-development-platform.googlecode.com/svn/wiki/images/XBS%20Server%20module.png" width="800" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/XBS%20Server%20module.png" width="800" />
 
 
 ## <a name="demo" />Give it a try? 
