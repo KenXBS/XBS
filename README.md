@@ -1,6 +1,6 @@
 ﻿# XBS -- an advanced application development platform
 
-*(Updated on April 14, 2015)*
+*(Updated on May 7th, 2015)*
 
 ## Table of content
  * [Why XBS?](#WhyXBS)
@@ -12,13 +12,13 @@
 
 ## <a name="WhyXBS"/>Why XBS?
 
- * Visually model application processes. Using XBS IDE, developer can graphically define process interface, process flow, process interaction, and process life cycle. Application's UI processes and background processes will be modeled together. Application sketch diagrams becomes a part of 'programming'. See [Screen Shots](#ScreenShots)
+ * Visually model application processes/logic. Using XBS IDE, developers graphically define/declare all the aspects of application processes: process start/end time, process life span (short or long running), process interface (inputs, outcomes, inlet/outlet and sync/a-sync calls, inlet/outlet events), process flow, process interaction, process hierarchy/containment and process type (transaction enabled, real-time, UI, background job, etc.). Application's UI processes and background processes are modeled together. No doubts, visual process design brings many benefits to application development: it allows quick prototyping design and concept validation; it lets developers and other project stake holders collaborate in an efficient way; it makes project's maintenance much easier since most interested application logic is presented visually. See [Screen Shots](#ScreenShots)
 
- * XBS application is modularized. Application development typically ends up with a set of fully tested and reusable domain specific modules. It would significantly reduce the cost of future development.
+ * Application developed with XBS is 'forced' to be modular. Application development typically ends up with a set of fully tested and reusable (domain specific) modules. It would significantly reduce the cost of future development. 
  
- * XBS Application Server provides a clustered computing environment for application execution. It provides off-the-shelf functions to applications at run-time, at module level: fail-over & load balance, distributed transaction, real-time tracing and execution profiling & monitor, etc. XBS provides a web console, to manage XBS application server cluster.
+ * XBS Application Server provides a clustered computing environment for application execution. It provides off-the-shelf functions to applications at run-time, at module level: fail-over & load balance, distributed computing (RPC), distributed transaction, real-time tracing and execution profiling & monitor, etc. XBS provides a web console, to manage XBS application server cluster. Those build-in functionality would significant reduce the cost and time of application development. 
 
- * Write once and use anywhere. Benefit from XBS loosely-coupled nature, XBS application can be deployed to any environment, from single machine to a large clustered computer farm on fly, without code change.
+ * Benefits from its modular and loosely-coupled nature, XBS application is highly scale-able and can be executed on different hardware environment, from single machine to a large clustered computer farm, without code change. 
 
  
 ## <a name="WhatIsXBS" /> What is XBS?
