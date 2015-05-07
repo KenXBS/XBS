@@ -27,7 +27,7 @@ XBS is a generic application development platform, to design and execute dynamic
 application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
 Server, application execution management console, and application unit-test framework. 
 
-<img src="http://xbs-application-development-platform.googlecode.com/files/xbs%20architecture%20diagram.jpg" width="800"/>
+<img src="https://github.com/KenXBS/XBS/blob/master/xbs%20architecture%20diagram.jpg" width="800"/>
 
 XBS is a model-driven application development platform. XBS Application development cycle is straightforward: first, model application processes by 
 using XBS graphical modeling tools. After that, to implement all the code nodes (if any) with chosen programming languages. 
