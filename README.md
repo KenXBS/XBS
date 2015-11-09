@@ -1,6 +1,6 @@
 # XBS -- an Process Graphic Modeling Language (PGML) application development tools & execution platform
 
-*(Updated on May 7th, 2015)*
+*(Updated on November 11th, 2015)*
 
 ## Table of content
  * [What is PGML?](#WhatIsPML) 
@@ -14,7 +14,7 @@
 ## <a name="WhatIsPML"/>What is PML?
 PGML is software process based graphic modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into subprocess, and so on. Whereas PGML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are uni-direction data-flow edges. The following is the PGML's UML meta class diagram:
 
-<img src="https://github.com/KenXBS/XBS/blob/master/images/PGML%20XML%20class%20diagram.png" width="800" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
 
 The next is a sample PGML diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/images/Sample%20diagram.png" width="800" />
@@ -22,23 +22,19 @@ The next is a sample PGML diagram:
 PGML is a programming language and not for sketches. More over, PGML diagram is executable (no code generation), you get what you drawed right way. Due the proper design of PGML process interface, PGML process node is easy to be encaplated and be modula. A PGML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PGML application is loose-coupled and modulized. PGML diagram is also a component and package diagram. 
 
 ## <a name="WhyPML" />Why not UML behavior diagrams?
-The problems of UML behavior diagrams are:
- * UML behavior diagrams are like pieces puzzles of a whole. Each diagram descript only one aspect of process. Like Activity and state-machine diagrams are only for control-flows. Sequence, communication, and collaboration diagrams are only for object-flow. So a UML based applicaton consists of a set of classes, each class consists of a set of methods, and each method may has couple diagrams. We end up a dozen of diagrams, each one is specific a tiny part of the whole application. We need to merge all the puzzle pieces in mind to get the whole picture of process logic. That could be too hard for mid-size of business logic change. PGML has only one type of diagram. One process is one diagram. It has tree type of architecture. It always start from one applicaton (or system) disgram. Simply drill down when you need more details of a part.
- * UML behavior diagrama are only for class methods. It has no 'process' concept. And process is the natural basic element when we think about a complex software system or application. (OO class should be just an implmentation methodology. It's a coding level thing.)
- * UML Activity node has only one outcome port. It forces designer to manage to merge multiple outcome probablities to be one. And the following decision node has to know the source node's outcome logic to be able to split it accordingly. That make node encapulation be imposible.  
- * UML decision node has only four ports. What if we need more than three branches? 
- * UML behavoir diagram is hard for reverse engineering.
 
-## <a name="WhyXBS"/>Why XBS?
- * Visually model application processes/logic. Using XBS IDE, developers graphically define/declare all the aspects of application processes: process start/end time, process life span (short or long running), process interface (inputs, outcomes, inlet/outlet and sync/a-sync calls, inlet/outlet events), process flow, process interaction, process hierarchy/containment and process type (transaction enabled, real-time, UI, background job, etc.). Application's UI processes and background processes are modeled together. No doubts, visual process design brings many benefits to application development: it allows quick prototyping design and concept validation; it lets developers and other project stake holders collaborate in an efficient way; it makes project's maintenance much easier since most interested application logic is presented visually. See [Screen Shots](#ScreenShots)
+The follow is a table to compare UML behavior diagrams and PGML:
+<table><tbody>
+<tr><th>UML (Behavior diagrams)</th><th>PGML</th></tr>
+<tr><td>Class oriented, need translation from Process</td><td>Process oriented</td></tr>
+<tr><td>Has a few diagrams, some only for control-flow, some only for data-flow. To model even a simple process, typically need a few diagrams, and become puzzle-alike modeling.</td><td>Only has one diagram, support both control and data flow. One diagram is for one process.</td></tr>
+<tr><td>Behavior diagram is not reusable since it bound to one specific class.</td><td>Reusable in a maximum degree, as each diagram is self-contained. It interacts with calling environment only through its edges</td></tr>
+<tr><td>Code generation, and hard reverse engineering</td><td>Execute directly from its process diagram</td></tr>
+<tr><td>Hard modulize</td><td>Modulized in nature</td></tr>
+<tr><td>Activity node has only one outcome, decision node need to know the way of encoding of the source node's outcome. It's not clean to split problem concern</td><td>Support multiple outcome probabilities in nature, no decision node</td></tr>
+</tbody></table>
 
- * Application developed with XBS is 'forced' to be modular. Application development typically ends up with a set of fully tested and reusable (domain specific) modules. It would significantly reduce the cost of future development. 
- 
- * XBS Application Server provides a clustered computing environment for application execution. It provides off-the-shelf functions to applications at run-time, at module level: fail-over & load balance, distributed computing (RPC), distributed transaction, real-time tracing and execution profiling & monitor, etc. XBS provides a web console, to manage XBS application server cluster. Those build-in functionality would significant reduce the cost and time of application development. 
 
- * Benefits from its modular and loosely-coupled nature, XBS application is highly scale-able and can be executed on different hardware environment, from single machine to a large clustered computer farm, without code change. 
-
- 
 ## <a name="WhatIsXBS" /> What is XBS?
 
 XBS is a PGML-based application development platform, to design and execute dynamic, modular applications: from simple desktop application, web application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
@@ -110,6 +106,15 @@ computing applications.
 a foundation for domain-specific modeling; XBS execution environment provides many off-the-shelf features for BPM applications, e.g. monitor, analyze, 
 events trap, etc.
  
+## <a name="WhyXBS"/>Why XBS?
+
+ * Visually model application processes/logic. Using XBS IDE, developers graphically define/declare all the aspects of application processes: process start/end time, process life span (short or long running), process interface (inputs, outcomes, inlet/outlet and sync/a-sync calls, inlet/outlet events), process flow, process interaction, process hierarchy/containment and process type (transaction enabled, real-time, UI, background job, etc.). Application's UI processes and background processes are modeled together. No doubts, visual process design brings many benefits to application development: it allows quick prototyping design and concept validation; it lets developers and other project stake holders collaborate in an efficient way; it makes project's maintenance much easier since most interested application logic is presented visually. See [Screen Shots](#ScreenShots)
+
+ * Application developed with XBS is 'forced' to be modular. Application development typically ends up with a set of fully tested and reusable (domain specific) modules. It would significantly reduce the cost of future development. 
+ 
+ * XBS Application Server provides a clustered computing environment for application execution. It provides off-the-shelf functions to applications at run-time, at module level: fail-over & load balance, distributed computing (RPC), distributed transaction, real-time tracing and execution profiling & monitor, etc. XBS provides a web console, to manage XBS application server cluster. Those build-in functionality would significant reduce the cost and time of application development. 
+
+ * Benefits from its modular and loosely-coupled nature, XBS application is highly scale-able and can be executed on different hardware environment, from single machine to a large clustered computer farm, without code change. 
 
 ## <a name="Advantages" />Architecture advantages
 
