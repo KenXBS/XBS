@@ -30,7 +30,6 @@ The problems of XML behavior diagrams are:
  * XML behavoir diagram is hard for reverse engineering.
 
 ## <a name="WhyXBS"/>Why XBS?
-
  * Visually model application processes/logic. Using XBS IDE, developers graphically define/declare all the aspects of application processes: process start/end time, process life span (short or long running), process interface (inputs, outcomes, inlet/outlet and sync/a-sync calls, inlet/outlet events), process flow, process interaction, process hierarchy/containment and process type (transaction enabled, real-time, UI, background job, etc.). Application's UI processes and background processes are modeled together. No doubts, visual process design brings many benefits to application development: it allows quick prototyping design and concept validation; it lets developers and other project stake holders collaborate in an efficient way; it makes project's maintenance much easier since most interested application logic is presented visually. See [Screen Shots](#ScreenShots)
 
  * Application developed with XBS is 'forced' to be modular. Application development typically ends up with a set of fully tested and reusable (domain specific) modules. It would significantly reduce the cost of future development. 
