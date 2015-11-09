@@ -1,33 +1,33 @@
-# XBS -- an Process Modeling Language (PML) application development tools & execution platform
+# XBS -- an Process Graphic Modeling Language (PGML) application development tools & execution platform
 
 *(Updated on May 7th, 2015)*
 
 ## Table of content
- * [What is PML?](#WhatIsPML) 
- * [Why not XML behavior diagrams?](#WhyPML)
+ * [What is PGML?](#WhatIsPML) 
+ * [Why not UML behavior diagrams?](#WhyPML)
  * [What is XBS?](#WhatXBS)
  * [Platform Components](#Components)
  * [Architecture Advantages](#Advantages)
  * [Screen Shots](#ScreenShots)
- * [Give it a try](#demo)
+ * [Want to give it a try?](#demo)
 
 ## <a name="WhatIsPML"/>What is PML?
-PML is software process based graphic modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into subprocess, and so on. Whereas PML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are uni-direction data-flow edges. The following is the PML's XML meta class diagram:
+PGML is software process based graphic modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into subprocess, and so on. Whereas PGML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are uni-direction data-flow edges. The following is the PGML's UML meta class diagram:
 
-<img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
+<img src="https://github.com/KenXBS/XBS/blob/master/images/PGML%20XML%20class%20diagram.png" width="800" />
 
-The next is a sample PML diagram:
+The next is a sample PGML diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/images/Sample%20diagram.png" width="800" />
 
-PML is a programming language and not for sketches. More over, PML diagram is executable, you get what you drawed. Due the proper design of PML process interface, PML process node is easy to be encaplated and be modula. A PML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PML application is loose-coupled and modulized. PML diagram is also a component and package diagram. 
+PGML is a programming language and not for sketches. More over, PGML diagram is executable (no code generation), you get what you drawed right way. Due the proper design of PGML process interface, PGML process node is easy to be encaplated and be modula. A PGML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PGML application is loose-coupled and modulized. PGML diagram is also a component and package diagram. 
 
-## <a name="WhyPML" />Why not XML behavior diagrams?
-The problems of XML behavior diagrams are:
- * XML behavior diagrams are like pieces puzzles of a whole. Each diagram descript only one aspect of process. Like Activity and state-machine diagrams are only for control-flows. Sequence, communication, and collaboration diagrams are only for object-flow. So a XML based applicaton consists of a set of classes, each class consists of a set of methods, and each method may has couple diagrams. We end up a dozen of diagrams, each one is specific a tiny part of the whole application. We need to merge all the puzzle pieces in mind to get the whole picture of process logic. That could be too hard for mid-size of business logic change. PML has only one type of diagram. One process is one diagram. It has tree type of architecture. It always start from one applicaton (or system) disgram. Simply drill down when you need more details of a part.
- * XML behavior diagrama are only for class methods. It has no 'process' concept. And process is the natural basic element when we think about a complex software system or application. (OO class should be just an implmentation methodology. It's a coding level thing.)
- * XML Activity node has only one outcome port. It forces designer to manage to merge multiple outcome probablities to be one. And the following decision node has to know the source node's outcome logic to be able to split it accordingly. That make node encapulation be imposible.  
- * XML decision node has only four ports. What if we need more than three branches? 
- * XML behavoir diagram is hard for reverse engineering.
+## <a name="WhyPML" />Why not UML behavior diagrams?
+The problems of UML behavior diagrams are:
+ * UML behavior diagrams are like pieces puzzles of a whole. Each diagram descript only one aspect of process. Like Activity and state-machine diagrams are only for control-flows. Sequence, communication, and collaboration diagrams are only for object-flow. So a UML based applicaton consists of a set of classes, each class consists of a set of methods, and each method may has couple diagrams. We end up a dozen of diagrams, each one is specific a tiny part of the whole application. We need to merge all the puzzle pieces in mind to get the whole picture of process logic. That could be too hard for mid-size of business logic change. PGML has only one type of diagram. One process is one diagram. It has tree type of architecture. It always start from one applicaton (or system) disgram. Simply drill down when you need more details of a part.
+ * UML behavior diagrama are only for class methods. It has no 'process' concept. And process is the natural basic element when we think about a complex software system or application. (OO class should be just an implmentation methodology. It's a coding level thing.)
+ * UML Activity node has only one outcome port. It forces designer to manage to merge multiple outcome probablities to be one. And the following decision node has to know the source node's outcome logic to be able to split it accordingly. That make node encapulation be imposible.  
+ * UML decision node has only four ports. What if we need more than three branches? 
+ * UML behavoir diagram is hard for reverse engineering.
 
 ## <a name="WhyXBS"/>Why XBS?
  * Visually model application processes/logic. Using XBS IDE, developers graphically define/declare all the aspects of application processes: process start/end time, process life span (short or long running), process interface (inputs, outcomes, inlet/outlet and sync/a-sync calls, inlet/outlet events), process flow, process interaction, process hierarchy/containment and process type (transaction enabled, real-time, UI, background job, etc.). Application's UI processes and background processes are modeled together. No doubts, visual process design brings many benefits to application development: it allows quick prototyping design and concept validation; it lets developers and other project stake holders collaborate in an efficient way; it makes project's maintenance much easier since most interested application logic is presented visually. See [Screen Shots](#ScreenShots)
@@ -41,8 +41,7 @@ The problems of XML behavior diagrams are:
  
 ## <a name="WhatIsXBS" /> What is XBS?
 
-XBS is a PML-based application development platform, to design and execute dynamic, modular applications: from simple desktop application, web 
-application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
+XBS is a PGML-based application development platform, to design and execute dynamic, modular applications: from simple desktop application, web application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
 Server, application execution management console, and application unit-test framework. 
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/xbs%20architecture%20diagram.jpg" width="800"/>
