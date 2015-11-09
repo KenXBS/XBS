@@ -1,14 +1,33 @@
-ï»¿# XBS -- an advanced application development platform
+# XBS -- an Process Modeling Language (PML) application development tools & execution platform
 
 *(Updated on May 7th, 2015)*
 
 ## Table of content
- * [Why XBS?](#WhyXBS)
+ * [What is PML?](#WhatIsPML) 
+ * [Why not XML behavior diagrams?](#WhyPML)
  * [What is XBS?](#WhatXBS)
  * [Platform Components](#Components)
  * [Architecture Advantages](#Advantages)
  * [Screen Shots](#ScreenShots)
  * [Give it a try](#demo)
+
+## <a name="WhatIsPML"/>What is PML?
+PML is software process based graphic modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into subprocess, and so on. Whereas PML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are uni-direction data-flow edges. The following is the PML's XML meta class diagram:
+
+<img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
+
+The next is a sample PML diagram:
+<img src="https://github.com/KenXBS/XBS/blob/master/images/Sample%20diagram.png" width="800" />
+
+PML is a programming language and not for sketches. More over, PML diagram is executable, you get what you drawed. Due the proper design of PML process interface, PML process node is easy to be encaplated and be modula. A PML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PML application is loose-coupled and modulized. PML diagram is also a component and package diagram. 
+
+## <a name="WhyPML" />Why not XML behavior diagrams?
+The problems of XML behavior diagrams are:
+ * XML behavior diagrams are like pieces puzzles of a whole. Each diagram descript only one aspect of process. Like Activity and state-machine diagrams are only for control-flows. Sequence, communication, and collaboration diagrams are only for object-flow. So a XML based applicaton consists of a set of classes, each class consists of a set of methods, and each method may has couple diagrams. We end up a dozen of diagrams, each one is specific a tiny part of the whole application. We need to merge all the puzzle pieces in mind to get the whole picture of process logic. That could be too hard for mid-size of business logic change. PML has only one type of diagram. One process is one diagram. It has tree type of architecture. It always start from one applicaton (or system) disgram. Simply drill down when you need more details of a part.
+ * XML behavior diagrama are only for class methods. It has no 'process' concept. And process is the natural basic element when we think about a complex software system or application. (OO class should be just an implmentation methodology. It's a coding level thing.)
+ * XML Activity node has only one outcome port. It forces designer to manage to merge multiple outcome probablities to be one. And the following decision node has to know the source node's outcome logic to be able to split it accordingly. That make node encapulation be imposible.  
+ * XML decision node has only four ports. What if we need more than three branches? 
+ * XML behavoir diagram is hard for reverse engineering.
 
 ## <a name="WhyXBS"/>Why XBS?
 
@@ -23,7 +42,7 @@
  
 ## <a name="WhatIsXBS" /> What is XBS?
 
-XBS is a generic application development platform, to design and execute dynamic, modular applications: from simple desktop application, web 
+XBS is a PML-based application development platform, to design and execute dynamic, modular applications: from simple desktop application, web 
 application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
 Server, application execution management console, and application unit-test framework. 
 
@@ -31,7 +50,7 @@ Server, application execution management console, and application unit-test fram
 
 XBS is a model-driven application development platform. XBS Application development cycle is straightforward: first, model application processes by 
 using XBS graphical modeling tools. After that, to implement all the code nodes (if any) with chosen programming languages. 
-XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, â€˜the model is the executableâ€™. XBS Engine manages 
+XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, ¡®the model is the executable¡¯. XBS Engine manages 
 application models loading, remote calling, scheduling and fail-over, etc. Except that, application code talks to third party API directly. 
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/architecture_stack.png" width="600" />
@@ -41,8 +60,8 @@ outcomes (each outcome has its own set of outputs), events (outlet & inlet) and 
 language neutral. XBS module, in turn, is modeled by (functional and code) nodes, sub modules, shared modules and edges, using XBS proprietary process 
 modeling diagram, which can substitute all three URL behavior diagrams: sequence, stat chat, and activity diagram .  See [#Screen_Shots]
 
-XBS application is loosely coupled. Itâ€™s â€˜looselyâ€™ at run-time. That makes possible to distribute processes to multiple servers on fly. On the other 
-hand, itâ€™s â€˜coupledâ€™ at design time. Even a large enterprise system (with multiple web portals, web services and a bunch of back-end jobs) can be 
+XBS application is loosely coupled. It¡¯s ¡®loosely¡¯ at run-time. That makes possible to distribute processes to multiple servers on fly. On the other 
+hand, it¡¯s ¡®coupled¡¯ at design time. Even a large enterprise system (with multiple web portals, web services and a bunch of back-end jobs) can be 
 developed as one XBS project and based on one set of modules; UI and server-side logic are modeled together in one project (even one module). That is 
 different from loose-coupled SOA based applications, which is developed as multiple applications and become harder and harder to manage when system 
 grows. For XBS, a Web Service is just a remotely executed module. On the other hand, an XBS module can be deployed as a Web Service to provide 
@@ -51,7 +70,7 @@ services to third party application.
 XBS modules can be individually deployed, configured, executed among XBS application servers. XBS application can be very flexible to fit in various 
 hardware environments. It can be deployed on from single machine to a large computer farm, without any code change. XBS application servers also 
 provides off-the-shelf features for distributed application, like fail over, load balancing, distributed transaction, etc. For example, using XBS 
-application execution console (or programmatic), a module can be configured to run on a predefined server set (â€˜Groupâ€™ in XBS). When need more 
+application execution console (or programmatic), a module can be configured to run on a predefined server set (¡®Group¡¯ in XBS). When need more 
 computation power, just add machines to the server set. XBS cluster will automatically balance load to added machines.
 
 ## <a name="Components" />Platform Components
