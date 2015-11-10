@@ -53,10 +53,6 @@ The follow is a table to compare UML dynamic diagrams and PGML:
 	<td>Need runtime engine. Engine can provide off-the-shelf runtime functions to application, e.g. cluster environment, fail over and load balance, profiling and tracing, etc. That can be done in process granularity</td>
 	<td>No runtime</td>
 </tr>
-<tr>
-	<td>PGML is modular by nature, both in logic and package mode.</td>
-	<td>No modular</td>
-</tr>
 </tbody></table>
 
 
