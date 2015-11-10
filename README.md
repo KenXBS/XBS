@@ -12,26 +12,51 @@
  * [Want to give it a try?](#demo)
 
 ## <a name="WhatIsPML"/>What is PML?
-PGML is software process based graphic modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into subprocess, and so on. Whereas PGML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are uni-direction data-flow edges. The following is the PGML's UML meta class diagram:
+PGML is software process based graphic modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into sub process, and so on. Whereas PGML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are unidirectional data-flow edges. The following is the PGML's UML Meta class diagram:
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
 
 The next is a sample PGML diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/images/Sample%20diagram.png" width="800" />
 
-PGML is a programming language and not for sketches. More over, PGML diagram is executable (no code generation), you get what you drawed right way. Due the proper design of PGML process interface, PGML process node is easy to be encaplated and be modula. A PGML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PGML application is loose-coupled and modulized. PGML diagram is also a component and package diagram. 
+PGML is a programming language and not for sketches. Moreover, PGML diagram is executable (no code generation). Due the proper design of PGML process interface, PGML process node is easy to be encapsulated and be modular. A PGML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PGML application is loose-coupled and modular. PGML diagram is also a component diagram. 
 
-## <a name="WhyPML" />Why not UML behavior diagrams?
+## <a name="WhyPML" />Why not UML dynamic diagrams?
 
-The follow is a table to compare UML behavior diagrams and PGML:
+The follow is a table to compare UML dynamic diagrams and PGML:
 <table><tbody>
-<tr><th>UML (Behavior diagrams)</th><th>PGML</th></tr>
-<tr><td>Class oriented, need translation from Process</td><td>Process oriented</td></tr>
-<tr><td>Has a few diagrams, some only for control-flow, some only for data-flow. To model even a simple process, typically need a few diagrams, and become puzzle-alike modeling.</td><td>Only has one diagram, support both control and data flow. One diagram is for one process.</td></tr>
-<tr><td>Behavior diagram is not reusable since it bound to one specific class.</td><td>Reusable in a maximum degree, as each diagram is self-contained. It interacts with calling environment only through its edges</td></tr>
-<tr><td>Code generation, and hard reverse engineering</td><td>Execute directly from its process diagram</td></tr>
-<tr><td>Hard modulize</td><td>Modulized in nature</td></tr>
-<tr><td>Activity node has only one outcome, decision node need to know the way of encoding of the source node's outcome. It's not clean to split problem concern</td><td>Support multiple outcome probabilities in nature, no decision node</td></tr>
+<tr>
+	<th>PGML</th>
+	<th>UML dynamic diagrams</th>
+</tr>
+<tr>
+	<td>Process (or Object) oriented</td>
+	<td>Class oriented, need translated from Process model in mind</td>
+</tr>
+<tr>
+	<td>Has only one kind of diagram. It exhibits control and data flow in one diagram. It is also a component diagram. One process one diagram. (Sub process has its own diagram)</td>
+	<td>Has a few diagrams, some diagrams are only for control-flow, some only for data-flow. To model even a simple process, typically need a few diagrams. To get a whole picture, need put those puzzle pieces together. Hard to make a mid-size project change plan</td>
+</tr>
+<tr>
+	<td>PGML model can be reused in a maximum degree, as each model is self-contained. It interacts with calling environment only through its edges (and not global variables).</td>
+	<td>Behavior diagram is hardly to be reused since it belongs to a specific class and bound to class variables, unless it is a static method or a static class.</td>
+</tr>
+<tr>
+	<td>No decision node. Support multiple possible outcomes (each outcome has a set of its own outputs). It provides more information of a node. And it's clear for caller, too. On the other hand, Programmers or architects no need to struggle with how to use one set of outputs to represent multiple possible results.</td>
+	<td>UML Activity node has only one outcome. Decision node (or caller) need to know the way of source node's outcome encoding, to be able to split. It's not a clean way of splitting problem concern. It's also a mysterious for caller. Decision node only have maximum tree out ports, what about if one activity has more than 3 possible results? Same problem for Merge node.</td>
+</tr>
+<tr>
+	<td>Execute directly from its process diagram. WYSIWYG(what you see is what you get)</td>
+	<td>Code generation. It's hard to reverse engineering for UML behavior diagrams</td>
+</tr>
+<tr>
+	<td>Need runtime engine. Engine can provide off-the-shelf runtime functions to application, e.g. cluster environment, fail over and load balance, profiling and tracing, etc. That can be done in process granularity</td>
+	<td>No runtime</td>
+</tr>
+<tr>
+	<td>PGML is modular by nature, both in logic and package mode.</td>
+	<td>No modular</td>
+</tr>
 </tbody></table>
 
 
