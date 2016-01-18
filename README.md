@@ -12,7 +12,7 @@
  * [Want to give it a try?](#demo)
 
 ## <a name="WhatIsPML"/>What is PML?
-PGML is software process based graphic modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into sub process, and so on. Whereas PGML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are unidirectional data-flow edges. The following is the PGML's UML Meta class diagram:
+PGML is process-based software modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into sub process, and so on. Whereas PGML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are unidirectional data-flow edges. The following is the PGML's UML Meta class diagram:
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
 
