@@ -1,6 +1,6 @@
 # XBS -- an PGML based application development tools & execution platform
 
-*(Updated on November 11th, 2015)*
+*(Updated on February 2nd, 2016)*
 
 ## Table of content
  * [What is PGML?](#WhatIsPML) 
@@ -12,7 +12,7 @@
  * [Want to give it a try?](#demo)
 
 ## <a name="WhatIsPML"/>What is PML?
-PGML is process-oriented software modeling language. A software system or application can be modeled with a few collaborated and relative independent processes. A process can be further split into sub process, and so on. Whereas PGML has only one diagram, it is able to model every aspects of a software process. It supports both control-flow and data-flow (or object-flow). PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction data-flow edges; Event ports are unidirectional data-flow edges. The following is the PGML's UML Meta class diagram:
+PGML is process-oriented software modeling language. A software system or application can be modeled with a set of collaborated and relative independent processes. A process can be further split into sub process, and so on. Whereas PGML has only one type of diagram, it is able to model every aspects of a software process. It supports both control-flow and message-flow in one diagram. PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. The following is the PGML's UML Meta class diagram:
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
 
@@ -20,6 +20,12 @@ The next is a sample PGML diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/images/Sample%20diagram.png" width="800" />
 
 PGML is a programming language and not for sketches. Moreover, PGML diagram is executable (no code generation). Due the proper design of PGML process interface, PGML process node is easy to be encapsulated and be modular. A PGML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PGML application is loose-coupled and modular. PGML diagram is also a component diagram. 
+
+The next is an application sample, a web sign-on process diagram:
+<img src="https://github.com/KenXBS/XBS/blob/master/screenshot/Sample%20Login%20process.png" width="800" />
+
+The diagram shows a process which involves both UI and server-side components. The process starts with 'initExtJS' which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form. When user clicks on 'sign on' button, the process will call the backend 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities,
+success, failed, or blocked (two many failures). According to the its results, process will be routed to different corresponding following process, either show a message or open user's desktop.
 
 ## <a name="WhyPML" />Why not UML dynamic diagrams?
 
@@ -50,7 +56,7 @@ The follow is a table to compare UML dynamic diagrams and PGML:
 	<td>Code generation. It's hard to reverse engineering for UML behavior diagrams</td>
 </tr>
 <tr>
-	<td>Need runtime engine. Engine can provide off-the-shelf runtime functions to application, e.g. cluster environment, fail over and load balance, profiling and tracing, etc. That can be done in process granularity</td>
+	<td>Need execution engine. The engine can provide off-the-shelf functionalities at runtime to application, e.g. cluster environment, fail over and load balance, hot swap, profiling and tracing, etc. All can be done in process granularity</td>
 	<td>No runtime</td>
 </tr>
 </tbody></table>
@@ -58,14 +64,14 @@ The follow is a table to compare UML dynamic diagrams and PGML:
 
 ## <a name="WhatIsXBS" /> What is XBS?
 
-XBS is a PGML-based application development platform, to design and execute dynamic, modular applications: from simple desktop application, web application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
+XBS is a PGML-based application development platform, to develop dynamic, modular applications: from simple desktop application, web application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
 Server, application execution management console, and application unit-test framework. 
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/xbs%20architecture%20diagram.jpg" width="800"/>
 
 XBS is a model-driven application development platform. XBS Application development cycle is straightforward: first, model application processes by 
-using XBS graphical modeling tools. After that, to implement all the code nodes (if any) with chosen programming languages. 
-XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, ¡®the model is the executable¡¯. XBS Engine manages 
+using XBS PGML modeling tools. After that, to implement all the code nodes (if any) with chosen programming languages. 
+XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, the model is the executable. XBS Engine manages 
 application models loading, remote calling, scheduling and fail-over, etc. Except that, application code talks to third party API directly. 
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/architecture_stack.png" width="600" />
