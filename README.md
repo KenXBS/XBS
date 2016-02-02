@@ -24,8 +24,10 @@ PGML is a programming language and not for sketches. Moreover, PGML diagram is e
 The next is an application sample, a web sign-on process diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/Sample%20Login%20process.png" width="800" />
 
-The diagram shows a process which involves both UI and server-side components. The process starts with 'initExtJS' which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form. When user clicks on 'sign on' button, the process will call the backend 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities,
-success, failed, or blocked (two many failures). According to the its results, process will be routed to different corresponding following process, either show a message or open user's desktop.
+The diagram shows a process which involves both UI and server-side components. The process starts with <<initExtJS>> node, which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form where user keys in user's credentials. When user clicks on 'sign on' button, the process will be routed to the server-side 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities,
+success, failed, or blocked (two many failures). According to its outcome, process will be routed to different corresponding following process, either show a message or open user's desktop. The following is the top application diagram:
+<img src="https://github.com/KenXBS/XBS/blob/master/screenshot/web%20app%20demo.png" width="800" />
+When the web application starts, it starts the <<serverend>> process at server-side, which keeps running and provides services (e.g. authentication) to other processes. Note, there is no raw Ajax to code. Communications between node to node, including UI to back-end are handled by PGML execution platform. 
 
 ## <a name="WhyPML" />Why not UML dynamic diagrams?
 
