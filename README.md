@@ -1,153 +1,99 @@
-# XBS -- an PGML based application development tools & execution platform
+# XBS -- an PML based, model-driven application development tools & execution platform
 
 *(Updated on February 2nd, 2016)*
 
 ## Table of content
- * [What is PGML?](#WhatIsPML) 
- * [Why not UML behavior diagrams?](#WhyPML)
+ * [What is PML?](#WhatIsPML) 
+ * [PML vs UML?](#PMLvsUML)
  * [What is XBS?](#WhatXBS)
- * [Platform Components](#Components)
  * [Architecture Advantages](#Advantages)
  * [Screen Shots](#ScreenShots)
  * [Want to give it a try?](#demo)
 
 ## <a name="WhatIsPML"/>What is PML?
-PGML is process-oriented software modeling language. A software system or application can be modeled with a set of collaborated and relative independent processes. A process can be further split into sub process, and so on. Whereas PGML has only one type of diagram, it is able to model every aspects of a software process. It supports both control-flow and message-flow in one diagram. PGML process node has one Input port, multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. The following is the PGML's UML Meta class diagram:
+PML is graphic process-oriented software modeling language. The mindset of PML is: software system or applications can be modeled with a set of collaborated and relative independent processes. A structured process can be further modeled by sub processes, so on and so forth. 
 
+PML uses one diagram to model all behaviors of a software process: control-flows, message(object)-flows and event-flows. PML process node has one Input port (it is also process starting point), multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. PML integrates modeling of UI together with back-end processes.
+
+PML models are directly executable, by PML execution engine. Because PML application is modular, PML execution environment could provides off-the-shelf functionalities to application, such as process based profiling; fail-over and load-balancing at process granularity; dynamic on/off logging of a process's input/outcome (without coding it); single instance a process across the whole system; specific a power machine to run the cpu-hog processes; computing resources allocation, etc. 
+
+The following is the PML's UML meta model diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
 
-The next is a sample PGML diagram:
-<img src="https://github.com/KenXBS/XBS/blob/master/images/Sample%20diagram.png" width="800" />
-
-PGML is a programming language and not for sketches. Moreover, PGML diagram is executable (no code generation). Due the proper design of PGML process interface, PGML process node is easy to be encapsulated and be modular. A PGML process node just take care its self. It is the caller to take care how to use it. The connection between processes are setup by configuration. PGML application is loose-coupled and modular. PGML diagram is also a component diagram. 
-
-The next is an application sample, a web sign-on process diagram:
+The following is an application sample, a web sign-on process diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/Sample%20Login%20process.png" width="800" />
 
 The diagram shows a process which involves both UI and server-side components. The process starts with <<initExtJS>> node, which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form where user keys in user's credentials. When user clicks on 'sign on' button, the process will be routed to the server-side 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities,
 success, failed, or blocked (two many failures). According to its outcome, process will be routed to different corresponding following process, either show a message or open user's desktop. The following is the top application diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/web%20app%20demo.png" width="800" />
-When the web application starts, it starts the <<serverend>> process at server-side, which keeps running and provides services (e.g. authentication) to other processes. Note, there is no raw Ajax to code. Communications between node to node, including UI to back-end are handled by PGML execution platform. 
+When the web application starts, it starts the <<serverend>> process at server-side, which keeps running and provides services (e.g. authentication) to other processes. Note, there is no raw Ajax to code. Communications between node to node, including UI to back-end are handled by PML execution platform. 
 
-## <a name="WhyPML" />Why not UML dynamic diagrams?
+## <a name="PMLvsUML" />PML vs UML
+PML and UML are both Object-Oriented graphic modeling language. But they bear different modeling idea. UML uses an Unified way (i.e. class-based) to model all kinds of software entities, data or behaviors. PML, in the opposite, applies different modeling semantics for different type of software objects. For example, for application data, use class-based modeling, same as UML does; for application behaviors, PML provides a specific set of graphic symbols or notations. According to PML's thought, application has behaviors, behaviors manipulate data. PML is used to model things, e.g. data, processes, events, roles, transactions, etc. And UML is to model program. 
 
-The follow is a table to compare UML dynamic diagrams and PGML:
+Another significant difference of UML and PML is: UML is code-generation and PML is directly execution on models. PML through its execution platform to provide off-the-shelf functionalities to its applications.  
+
+The follow is a table to list the various difference of UML and PML:
 <table><tbody>
 <tr>
-	<th>PGML</th>
-	<th>UML dynamic diagrams</th>
+	<th>PML</th>
+	<th>UML</th>
 </tr>
 <tr>
-	<td>Process (or Object) oriented</td>
-	<td>Class oriented, need translated from Process model in mind</td>
+	<td>Modeling different things in different manner. </td>
+	<td>One set of modeling notations for everything. </td>
 </tr>
 <tr>
-	<td>Has only one kind of diagram. It exhibits control and data flow in one diagram. It is also a component diagram. One process one diagram. (Sub process has its own diagram)</td>
-	<td>Has a few diagrams, some diagrams are only for control-flow, some only for data-flow. To model even a simple process, typically need a few diagrams. To get a whole picture, need put those puzzle pieces together. Hard to make a mid-size project change plan</td>
+	<td>One diagram one process. All behaviors of a process is modeled within one diagram.</td>
+	<td>Has a few type of diagrams, some are only for control-flows, some only for message-flows. some only for event-flows. To model event a simple process, need a couple diagrams. To get a whole picture of behaviors of a process, need put those puzzle pieces together. Harder to model, review and debug</td>
 </tr>
 <tr>
-	<td>PGML model can be reused in a maximum degree, as each model is self-contained. It interacts with calling environment only through its edges (and not global variables).</td>
-	<td>Behavior diagram is hardly to be reused since it belongs to a specific class and bound to class variables, unless it is a static method or a static class.</td>
+	<td>UI and back-end process can model together and consistently.</td>
+	<td>UML is developing UI modeling spec. Wondering how can be used together with back-end process modeling?</td>
 </tr>
 <tr>
-	<td>No decision node. Support multiple possible outcomes (each outcome has a set of its own outputs). It provides more information of a node. And it's clear for caller, too. On the other hand, Programmers or architects no need to struggle with how to use one set of outputs to represent multiple possible results.</td>
-	<td>UML Activity node has only one outcome. Decision node (or caller) need to know the way of source node's outcome encoding, to be able to split. It's not a clean way of splitting problem concern. It's also a mysterious for caller. Decision node only have maximum tree out ports, what about if one activity has more than 3 possible results? Same problem for Merge node.</td>
+	<td>Encourage collaboration from all kinds of project stakeholders, as PML model diagram is intuitive.</td>
+	<td>Not intuitive for non-programmers.</td>
 </tr>
 <tr>
-	<td>Execute directly from its process diagram. WYSIWYG(what you see is what you get)</td>
-	<td>Code generation. It's hard to reverse engineering for UML behavior diagrams</td>
+	<td>PML models are interface-based and self-contained. PML encourages to make each model more generic and be reused in source or binary form. For example, it's easy to develop a domain specific model library. </td>
+	<td>XML behavior diagram is hardly (or not straightforward) to be reused.</td>
 </tr>
 <tr>
-	<td>Need execution engine. The engine can provide off-the-shelf functionalities at runtime to application, e.g. cluster environment, fail over and load balance, hot swap, profiling and tracing, etc. All can be done in process granularity</td>
-	<td>No runtime</td>
+	<td>No decision node. PML process model supports multiple outcomes. Control flow routes based on the outcome of a process directly. No hassles of encoding and decoding of outcomes.</td>
+	<td>UML Activity node has only one outcome edge. Developers have to merge (encode) from multiple outcomes to one, at end of sub activity, and after, decode back from one outcome and recover to multiple outcomes, to be able to route.</td>
 </tr>
+<tr>
+	<td>Direct-execution on models. WYSIWYG(what you see is what you get). Its execution environment can provide off-the-shelf functionalities to application, like cluster environment, fail-over and load-balancing, hot swap, dynamic profiling and tracing, dynamic computing resources allocation, etc. All those can be done in flexible granularity, in unit of model. </td>
+	<td>Code generation. Modeling information lost in final executable. No way to provide useful functionalities to application based on application models.</td>
+</tr>
+
 </tbody></table>
 
 
 ## <a name="WhatIsXBS" /> What is XBS?
 
-XBS is a PGML-based application development platform, to develop dynamic, modular applications: from simple desktop application, web application, to large distributed enterprise system. XBS is a complete application development environment. It provides visual IDE, Application 
-Server, application execution management console, and application unit-test framework. 
+XBS is a PML based model-driven application development tools and application execution environment. XBS is also a RAD (Rapid Application Development) environment.
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/xbs%20architecture%20diagram.jpg" width="800"/>
 
-XBS is a model-driven application development platform. XBS Application development cycle is straightforward: first, model application processes by 
-using XBS PGML modeling tools. After that, to implement all the code nodes (if any) with chosen programming languages. 
-XBS is an executable MDD. XBS process diagrams are executed by XBS Engine directly. In another word, the model is the executable. XBS Engine manages 
-application models loading, remote calling, scheduling and fail-over, etc. Except that, application code talks to third party API directly. 
 
-<img src="https://github.com/KenXBS/XBS/blob/master/images/architecture_stack.png" width="600" />
+It provides: 
 
-XBS application process is modeled by a set of loosely coupled modules. XBS module is a software block which has full-featured interface: inputs, 
-outcomes (each outcome has its own set of outputs), events (outlet & inlet) and calls (inlet and outlet). XBS interface is declarative and programming 
-language neutral. XBS module, in turn, is modeled by (functional and code) nodes, sub modules, shared modules and edges, using XBS proprietary process 
-modeling diagram, which can substitute all three URL behavior diagrams: sequence, stat chat, and activity diagram .  See [#Screen_Shots]
-
-XBS application is loosely coupled. It¡¯s ¡®loosely¡¯ at run-time. That makes possible to distribute processes to multiple servers on fly. On the other 
-hand, it¡¯s ¡®coupled¡¯ at design time. Even a large enterprise system (with multiple web portals, web services and a bunch of back-end jobs) can be 
-developed as one XBS project and based on one set of modules; UI and server-side logic are modeled together in one project (even one module). That is 
-different from loose-coupled SOA based applications, which is developed as multiple applications and become harder and harder to manage when system 
-grows. For XBS, a Web Service is just a remotely executed module. On the other hand, an XBS module can be deployed as a Web Service to provide 
-services to third party application.
-
-XBS modules can be individually deployed, configured, executed among XBS application servers. XBS application can be very flexible to fit in various 
-hardware environments. It can be deployed on from single machine to a large computer farm, without any code change. XBS application servers also 
-provides off-the-shelf features for distributed application, like fail over, load balancing, distributed transaction, etc. For example, using XBS 
-application execution console (or programmatic), a module can be configured to run on a predefined server set (¡®Group¡¯ in XBS). When need more 
-computation power, just add machines to the server set. XBS cluster will automatically balance load to added machines.
-
-## <a name="Components" />Platform Components
-
-  * <font color="blue">IDE</font>. XBS IDE provides graphical application processes modeling tools, to define components, nodes, events, resources, 
-etc. and link them together to form application processes. Meanwhile, the IDE also provides programming environment to code for 'UI' and 'Code' nodes, 
-with various programming languages, e.g. Java, C/C++, C#, Java Script etc. In addition, XBS IDE provides a <font color="blue">test harness 
-infrastructure</font> to facility QA processes. It can help with both unit test of each component, and integration test, to make sure it covers all 
+  * <font color="blue">IDE</font>. XBS IDE is a PML based graphical modeling tools, to model data, processes, events, roles, transactions, resources, 
+etc. Meanwhile, the IDE provides programming environment to implement UI and Code logics, with various programming languages, like Java, C/C++, C#, Java Script etc. In addition, XBS IDE provides a <font color="blue">test harness 
+infrastructure</font> to facility QA processes. It can help with both unit test of each model, and integration test, to make sure it covers all 
 the code paths.
 
-  * <font color="blue">Application server</font>. XBS provides rich-featured distributed application execution environment. It provides out-of-shelf 
-features for enterprise class applications, like <font color="blue">fail-over, load balancing, events processing, distributed transaction, etc. 
-</font>XBS supports diverse types of accesses: Web/Mobile portal, Web Services and back-ground jobs (scheduled or triggered by events, e.g. to 
-periodically clean up log, database, events trapping, etc.). Multiple applications can simultaneously run on one set of XBS run-time environment. 
+  * <font color="blue">Application execution engine</font>. It's a single-machine application execution engine. That's API based, so it can be embedded into customer applications. The engine can run different type of applications, like web/desktop application, web service or back-ground jobs.
 
-  * <font color="blue">Cluster Management Console</font>. XBS provides a web-based, centralized management console for application execution.  
-Administrators can be remotely and centralized to configure, monitor and troubleshooting application's execution among all the clustered application 
-servers. Remote management makes XBS platform <font color="blue">Cloud</font> ready: XBS application can be run (wholly or partially) in Cloud, and 
-managed remotely by its owner. _
 
-  * <font color="blue">Test harness platform</font> to facility unit and integration test. XBS debugger can let developer put breakpoints in the 
-process diagram, and enable step by step debugging at graphic level.
-  
-## Relationships with latest IT technologies
+  * <font color="blue">Clustered Application Server (CAS)</font>. It provides a clustered computing environment and a web based cluster management console.  XBS CAS can run multiple and various types of applications. Through cluster manager, administrator can remotely configure, monitor, load-balance, diagnostic application executions, at module granularity.
 
-   * <font color="blue">Event-driven</font> XBS modeling is event-enabled. XBS execution environment handles local and remote, system and application 
-events.
-
-  * <font color="blue">Test-driven</font> XBS provides unit & integration test framework to facility test-driven development or QA process.
-  
-  * <font color="blue">SOA</font> XBS is Web Service enabled. A XBS module/node can be simply a proxy to call third party web service. On the other 
-hand, a XBS module/node can be configured to provide SOAP interface to be invoked as a web service by other application. In addition, XBS execution 
-environment provides SOA infrastructure for applications.
-
-  * [https://en.wikipedia.org/wiki/Grid_computing Grid Computing] XBS platform can connect to a Grid environment, to support massive distributed 
-computing applications.
-
-  * <font color="blue">Business Process Management (BPM)</font> XBS is an excellent BPM application development platform: XBS modeling can be used as 
-a foundation for domain-specific modeling; XBS execution environment provides many off-the-shelf features for BPM applications, e.g. monitor, analyze, 
-events trap, etc.
- 
-## <a name="WhyXBS"/>Why XBS?
-
- * Visually model application processes/logic. Using XBS IDE, developers graphically define/declare all the aspects of application processes: process start/end time, process life span (short or long running), process interface (inputs, outcomes, inlet/outlet and sync/a-sync calls, inlet/outlet events), process flow, process interaction, process hierarchy/containment and process type (transaction enabled, real-time, UI, background job, etc.). Application's UI processes and background processes are modeled together. No doubts, visual process design brings many benefits to application development: it allows quick prototyping design and concept validation; it lets developers and other project stake holders collaborate in an efficient way; it makes project's maintenance much easier since most interested application logic is presented visually. See [Screen Shots](#ScreenShots)
-
- * Application developed with XBS is 'forced' to be modular. Application development typically ends up with a set of fully tested and reusable (domain specific) modules. It would significantly reduce the cost of future development. 
- 
- * XBS Application Server provides a clustered computing environment for application execution. It provides off-the-shelf functions to applications at run-time, at module level: fail-over & load balance, distributed computing (RPC), distributed transaction, real-time tracing and execution profiling & monitor, etc. XBS provides a web console, to manage XBS application server cluster. Those build-in functionality would significant reduce the cost and time of application development. 
-
- * Benefits from its modular and loosely-coupled nature, XBS application is highly scale-able and can be executed on different hardware environment, from single machine to a large clustered computer farm, without code change. 
 
 ## <a name="Advantages" />Architecture advantages
 
-As shown in Figure [#Architecture_Diagram], XBS application is made up by a set of loosely coupled components. Each components can be individually 
+As shown in Figure [#Architecture_Diagram], XBS application is modular and physically made up by a set of loosely coupled modules. Each module can be individually 
 deployed on servers in a heterogeneous <font color="blue">computer farm</font> environment. Blessed by that architecture, XBS brings significant 
 advantages for application development and execution:
 
@@ -160,7 +106,7 @@ shut down with zero application down time.
 
   * <font color="blue">Highly reliable</font>. XBS application is transaction protected.
   
-  * <font color="blue">Highly customize-able and extendable and support template programming</font>. Application can purposely design some modules to 
+  * <font color="blue">Highly customize-able and expandable and support template programming</font>. Application can purposely design some modules to 
 be customized by application consumers. They can also re-implement some module to extend the application's functionality. One module can be big as a 
 sub-system. XBS developers can make *templates* for vertical applications, such as a telecom or healthcare framework that includes pre-defined 
 processes, rules, dashboards and user screens that need only to be customized for use.
@@ -171,7 +117,7 @@ machine or network. For example, resources extensively accessing modules can be 
 machine), or computation extensive modules to a CPU-powerful machine,  to obtain most optimized performance.
 
   * <font color="blue">Highly dynamic and lower cost of ownership</font>. Except Code nodes, most of application logic is modeled by graphical tools 
-and transformed to execution by XBS. That accelerates the lifecycle of application development. XBS application is agility and dynamic. XBS modules is 
+and transformed to execution by XBS. That accelerates the life-cycle of application development. XBS application is agility and dynamic. XBS modules is 
 well-encapsulated and reusable. Application processes can be easily revised (by simply re-linking modules or nodes), to response ever-changing 
 requirement. XBS application can employ XBS event facilitates to be self-tuned also. 
 
@@ -206,7 +152,7 @@ for application cloud hosting. XBS application can be run (wholly or partially) 
 
 ## <a name="ScreenShots"></a>Screen Shots
 ### A typical application module
-_The following screen shot exhibits a typical application logic flow: init some required system components (e.g. authentication process), show user a 
+_The following screen shot exhibits a typical application logic flow: initialize some required system components (e.g. authentication process), show user a 
 log on page, it calls 'authentication' module/process to validate user according to user typed credentials. If 'success', it get user type from 
 authentication module and then return to XBS engine. XBS engine, as design, opens corresponding window according to user type. If 'failed', it return 
 'Exception' outcome with error message to XBS (or you can easily add a UI node to show the message to user.)_
@@ -217,7 +163,7 @@ authentication module and then return to XBS engine. XBS engine, as design, open
 ### The 'Auth' module
 _The following screen shot shows the 'authentication' module of the above application. It's started by 'init' node of the above main module. It, in 
 turn, starts authentication db and ready for two external calls: DoAuth and GetUserInfo. The module is long time process and designed to provide 
-services to other process. It also generate an OUT event when auth db got problem. The event is delivered to other processes as designed._
+services to other process. It also generate an OUT event when 'auth db' got problem. The event is delivered to other processes as designed._
 
 <img src="https://github.com/KenXBS/XBS/blob/master/images/auth.png" width="500" />
 
