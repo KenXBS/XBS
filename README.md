@@ -11,9 +11,9 @@
  * [Want to give it a try?](#demo)
 
 ## <a name="WhatIsPML"/>What is PML?
-PML is graphic process-oriented software modeling language. The mindset of PML is: software system or applications can be modeled with a set of collaborated and relative independent processes. A structured process can be further modeled by sub processes, so on and so forth. 
+PML is graphic, process-based application development language. The mindset of PML is: software system or applications can be modeled with a set of collaborated and relative independent processes. A structured process can be further modeled by sub processes, and so on so forth. 
 
-PML uses one diagram to model all behaviors of a software process: control-flows, message(object)-flows and event-flows. PML process node has one Input port (it is also process starting point), multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. PML integrates modeling of UI together with back-end processes.
+PML uses one diagram to model all the aspects of an application process: control-flows, message(object)-flows and event-flows. PML process node has one Input port (it is also process starting point), multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. PML integrates modeling of UI together with back-end processes.
 
 PML models are directly executable, by PML execution engine. Because PML application is modular, PML execution environment could provides off-the-shelf functionalities to application, such as process based profiling; fail-over and load-balancing at process granularity; dynamic on/off logging of a process's input/outcome (without coding it); single instance a process across the whole system; specific a power machine to run the cpu-hog processes; computing resources allocation, etc. 
 
