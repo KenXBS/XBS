@@ -17,15 +17,21 @@ PML uses graphic diagrams to model every aspect of application processes: lifecy
 The following is a PML diagram, modeling a sign-on process diagram of a web application:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/Sample%20Login%20process.png" width="800" />
 
-The diagram models a process which involves both UI and server-side components. The process starts with <<initExtJS>> node, which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form where user keys in user's credentials. When user clicks on 'sign on' button, the process will be routed to the server-side 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities, success, failed, or blocked (two many failures). According to its outcome, process will be routed to different corresponding following process, either show a message or open user's desktop. 
+The diagram models a process which involves both UI and server-side components. The process starts with 'initExtJS' node, which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form where user keys in user's credentials. When user clicks on 'sign on' button, the process will be routed to the server-side 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities, success, failed, or blocked (two many failures). According to its outcome, process will be routed to different corresponding following process, either show a message or open user's desktop. 
 
 The following is the top level application diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/web%20app%20demo.png" width="800" />
-When the web application starts, it starts the <<serverend>> process at server-side, which keeps running and provides services (e.g. authentication) to other processes. Note, there is no raw Ajax to code. Communications between node to node, including UI to back-end are handled by PML execution platform. 
+When the web application starts, it starts the 'serverend' process at server-side, which keeps running and provides services (e.g. authentication) to other processes. Note, there is no raw Ajax to code. Communications between node to node, including UI to back-end are handled by PML execution platform. 
 
-PML process node has one Input port (it is also process starting point), multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. PML diagrams are programing language neutral and all the edges are loosely coupled. The leaf node (named code node) will be implemented by any preferred programming launguage.
+Each PML process node may have:
+ * One Input port: create an instance of the process (locally or remotely, configured by PML model and managed by execution engin at runtime) and start to run the process with inputs, (most of time) coming from upstream process.
+ * Multiple inlet/outlet Call ports: outlet ports provide services to other process and inlet ports are getting (required) services from other processes. Call ports are bi-direction message-flow edges.
+ * Multiple inlet/outlet Event ports: outlet ports send events (or notifications) to linked processes and inlet ports received events of other processes. Event ports are unidirectional message-flow edges.
+ * Multiple outcome ports: it stops the process instance. Each outcome has its own outputs, which are (most of time) handed to downstream processes, as its inputs.
 
-PML application modeling starts from top level application processes. Structured process will be further modeled into smaller ones, until it reaches certain development criteria. In another word, PML modeling splits a complex application process into smaller, managable and reusagable ones.
+PML diagrams are programing language neutral and all the edges are loosely coupled. The leaf node (named code node) will be implemented by any preferred programming launguage, or imported from certain PML module library.
+
+PML application modeling starts from top level application processes. Structured process will be further modeled into smaller ones, until it reaches certain development criteria. In another word, PML modeling is to split a complex application process into smaller, managable and reusagable ones.
 
 PML diagram is directly executable, by PML execution engine. Because PML application is (forced) modular and loosely coupled, PML execution environment could provides off-the-shelf functionalities to application, such as process based profiling; fail-over and load-balancing at process granularity; dynamic on/off logging of a process's input/outcome (without coding it); single instance a process across the whole system; delegate a power machine to run the cpu-hog processes; computing resources allocation/distribution/balance, etc. 
 
