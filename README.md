@@ -11,25 +11,27 @@
  * [Want to give it a try?](#demo)
 
 ## <a name="WhatIsPML"/>What is PML?
-PML is graphic, process-based application development language. The mindset of PML is: software system or applications can be modeled with a set of collaborated and relative independent processes. A structured process can be further modeled by sub processes, and so on so forth. 
+PML is graphic, application process-based, model-driven software development language. 
+PML uses graphic diagrams to model every aspect of application processes: lifecycle, running location(local or remote), control flows, message(object) flows, event flows, etc.
 
-PML uses one diagram to model all the aspects of an application process: control-flows, message(object)-flows and event-flows. PML process node has one Input port (it is also process starting point), multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. PML integrates modeling of UI together with back-end processes.
-
-PML models are directly executable, by PML execution engine. Because PML application is modular, PML execution environment could provides off-the-shelf functionalities to application, such as process based profiling; fail-over and load-balancing at process granularity; dynamic on/off logging of a process's input/outcome (without coding it); single instance a process across the whole system; specific a power machine to run the cpu-hog processes; computing resources allocation, etc. 
-
-The following is the PML's UML meta model diagram:
-<img src="https://github.com/KenXBS/XBS/blob/master/images/PML%20XML%20class%20diagram.png" width="800" />
-
-The following is an application sample, a web sign-on process diagram:
+The following is a PML diagraming, modeling a website sign-on process diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/Sample%20Login%20process.png" width="800" />
 
-The diagram shows a process which involves both UI and server-side components. The process starts with <<initExtJS>> node, which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form where user keys in user's credentials. When user clicks on 'sign on' button, the process will be routed to the server-side 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities,
-success, failed, or blocked (two many failures). According to its outcome, process will be routed to different corresponding following process, either show a message or open user's desktop. The following is the top application diagram:
+The diagram models a process which involves both UI and server-side components. The process starts with <<initExtJS>> node, which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form where user keys in user's credentials. When user clicks on 'sign on' button, the process will be routed to the server-side 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities, success, failed, or blocked (two many failures). According to its outcome, process will be routed to different corresponding following process, either show a message or open user's desktop. 
+
+The following is the top level application diagram:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/web%20app%20demo.png" width="800" />
 When the web application starts, it starts the <<serverend>> process at server-side, which keeps running and provides services (e.g. authentication) to other processes. Note, there is no raw Ajax to code. Communications between node to node, including UI to back-end are handled by PML execution platform. 
 
+PML process node has one Input port (it is also process starting point), multiple inlet/outlet Call ports, inlet/outlet Event ports, and Outcome ports. Where, Input and Outcome ports are control-flow edges; Call ports are bi-direction message-flow edges; Event ports are unidirectional message-flow edges. PML diagrams are programing language neutral and all the edges are loosely coupled. The leaf node (named code node) will be implemented by any preferred programming launguage.
+
+PML application modeling starts from top level application processes. Structured process will be further modeled into smaller ones, until it reaches certain development criteria. In another word, PML modeling splits a complex application process into smaller, managable and reusagable ones.
+
+PML diagram is directly executable, by PML execution engine. Because PML application is (forced) modular and loosely coupled, PML execution environment could provides off-the-shelf functionalities to application, such as process based profiling; fail-over and load-balancing at process granularity; dynamic on/off logging of a process's input/outcome (without coding it); single instance a process across the whole system; delegate a power machine to run the cpu-hog processes; computing resources allocation/distribution/balance, etc. 
+
+
 ## <a name="PMLvsUML" />PML vs UML
-PML and UML are both Object-Oriented graphic modeling language. But they bear different modeling idea. UML uses an Unified way (i.e. class-based) to model all kinds of software entities, data or behaviors. PML, in the opposite, applies different modeling semantics for different type of software objects. For example, for application data, use class-based modeling, same as UML does; for application behaviors, PML provides a specific set of graphic symbols or notations. According to PML's thought, application has behaviors, behaviors manipulate data. PML is used to model things, e.g. data, processes, events, roles, transactions, etc. And UML is to model program. 
+PML and UML are both Object-Oriented graphic modeling language. But they have different modeling mindset. UML uses an Unified way (i.e. class-based) to model all kinds of software entities, data or behaviors. PML, in the opposite, applies different modeling semantics for different type of software objects. For example, for application data, use class-based modeling, same as UML does; for application behaviors, PML provides a specific set of graphic symbols or notations. According to PML's thought, application has behaviors, behaviors manipulate data. PML is used to model things, e.g. data, processes, events, roles, transactions, etc. And UML is to model program. 
 
 Another significant difference of UML and PML is: UML is code-generation and PML is directly execution on models. PML through its execution platform to provide off-the-shelf functionalities to its applications.  
 
