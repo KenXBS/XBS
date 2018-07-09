@@ -14,7 +14,7 @@
 PML is graphic, application process-based, model-driven software development language. 
 PML uses graphic diagrams to model every aspect of application processes: lifecycle, running location(local or remote), control flows, message(object) flows, event flows, etc.
 
-The following is a PML diagraming, modeling a website sign-on process diagram:
+The following is a PML diagram, modeling a sign-on process diagram of a web application:
 <img src="https://github.com/KenXBS/XBS/blob/master/screenshot/Sample%20Login%20process.png" width="800" />
 
 The diagram models a process which involves both UI and server-side components. The process starts with <<initExtJS>> node, which initializes a JavaScript framework on browser. If it's succeeded, it shows a login form where user keys in user's credentials. When user clicks on 'sign on' button, the process will be routed to the server-side 'auth' process, to authenticate user's credentials. The Auth process may end up with three possibilities, success, failed, or blocked (two many failures). According to its outcome, process will be routed to different corresponding following process, either show a message or open user's desktop. 
