@@ -211,12 +211,7 @@ _XBS Cluster Management Console itself is a XBS application. The following is th
 <img src="https://github.com/KenXBS/XBS/blob/master/images/XBS%20Server%20module.png" width="800" />
 
 
-## <a name="demo" />Give it a try? 
-I setup a XBS development environment on a test machine. I also create a couple of demo XBS applications: one is a desktop UI application, one is 
-non-UI application (calculate PI) and one is a web application (url is 'http://localhost:5555/test' )
-
-You may log onto the machine with [http://www.teamviewer.com/en/index.aspx TeamViewer]. Partner Id is '426124994' and password is 'xbstrial'.
-
-You may browser/modify those demo applications, and run them using Eclipse's 'Debug' menu.
+## <a name="demo" />Want to give it a try? 
+You could download [XBSDemo.zip](https://github.com/KenXBS/XBS/blob/master/demo/XBSDemo.zip). The zip has binaries of IDE, execution engine and couple of sample applications. It also includes a readme file on how to setup IDE on top of Eclipse, and how to run those sample applications from Eclipse.
 
 If you should have any difficulties, you can contact me at: liu_xiao_kang@hotmail.com
